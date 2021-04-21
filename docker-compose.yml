@@ -3,16 +3,16 @@ services:
         build:
             dockerfile: Dockerfile
             context: .
-        command: flask run --port=4567 --host=0.0.0.0
+        command: uvicorn cars_api:app --reload
         ports:
             - '4567:4567'
     
     postgres:
         image: postgres:11.4-alpine
         environment:
-            POSTGRES_DB: my_db
-            POSTGRES_USER: superuser
-            POSTGRES_PASSWORD: pwd
+            POSTGRES_DB: Cars
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: test
         ports:
             - '5432:5432'
         volumes:
